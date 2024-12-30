@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Admin</title>
+</head>
+<body>
+    <div class="crud">
+        <div class="head">
+            <h2>CRUD</h2>
+            <p>PRODUCT MANAGEMENT SYSTEM</p>
+            <style>
+                h2, p {
+                    text-align: center;
+                }
+                body {
+                    background-color:#e3e6f3;
+                }
+            </style>
+        </div>
+    
+        <div class="inputs">
+            <input placeholder="Title" type="text" id="title">
+            <div>
+            <input type="file" multiple accept="image/*" id="img">
+            <label for="img">Upload Image</label></div>
+            <input placeholder="Price" type="text" id="price">
+            <input placeholder="Product" type="text" id="product">
+
+            <style>
+                #img {
+                    display: none;
+                }
+                label {
+                    position: relative;
+                    left: 40%;
+                    bottom: 10px;
+                    font-size: 25px;
+                    font-weight: 800;
+                    cursor: pointer;
+                    transition: 0.4s;
+                }
+                input {
+                    width: 80%;
+                    position: relative;
+                    left: 10%;
+                    height: 50px;
+                    margin-bottom: 20px;
+                    border-color: forestgreen;
+                    outline: none;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 25px;
+                    text-align: center;
+                    transition: 0.3s;
+                }
+                input:focus {
+                    border: 2px solid forestgreen;
+                    transform: scale(1.1);
+                }
+                label:hover {
+                    color: forestgreen;
+                }
+            </style>
+        </div>
+        
+        <div id="create">
+            <button id="create">Create</button>
+            <style>
+                button {
+                    width: 80%;
+                    height: 50px;
+                    border-radius: 15px;
+                    background: forestgreen;
+                    color: white;
+                    font-size: 20px;
+                    border: none;
+                    cursor: pointer;
+                    transition: 0.6s;
+                    position: relative;
+                    left: 10%;
+                }
+                button:hover {
+                    background-color: greenyellow;
+                    color: black;
+                }
+                #delete{
+                    font-size: 17px;
+    width: 60px;
+    display: flex
+;
+    margin-bottom: 40px;
+    height: 30px;
+}
+                #update{
+                    font-size: 17px;
+    width: 60px;
+    display: flex
+;
+    margin-bottom: 40px;
+    height: 30px;
+}
+            </style>
+        </div>
+
+        <section id="product1" class="section-p1">
+            <h2>Products</h2>
+            <div id="productContainer" class="pro-container">
+                <!-- Products will be displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let title = document.getElementById("title");
+        let img = document.getElementById("img");
+        let product = document.getElementById("product");
+        let price = document.getElementById("price");
+        let create = document.getElementById("create");
+        if (localStorage.product != null) {
+            data = JSON.parse(localStorage.product);
+        } else {
+            data = [];
+        }
+    
+        create.onclick = function() {
+            // تحويل الصورة إلى Base64 باستخدام FileReader
+            let reader = new FileReader();
+            reader.onloadend = function() {
+                let newPro = {
+                    title: title.value,
+                    price: price.value,
+                    img: reader.result, // تخزين الصورة كـ Base64
+                    product: product.value,
+                }
+                data.push(newPro);
+                localStorage.setItem("product", JSON.stringify(data));
+                data.push()
+                showData();
+            }
+    
+            // إذا كانت الصورة مختارة
+            if (img.files[0]) {
+                reader.readAsDataURL(img.files[0]);
+            } else {
+                alert("Please select an image!");
+            }
+        }
+    
+        function showData() {
+            let table = "";
+            for (let i = 0; i < data.length; i++) {
+                table += `
+                    <div class="pro">
+                        <img src="${data[i].img}" alt="Product Image">
+                        <div class="des">
+                            <span>${data[i].title}</span>
+                            <h5>${data[i].product}</h5>
+                        <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                            <h4>${data[i].price} EGP</h4>
+                        </div>
+                    <a href="#"><i id="cart" class="fa-sharp fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <div>
+                        <button id="delete" onclick =deletedata(${i})>delete</button>
+                        </div>
+                        `;
+                    }            
+            document.getElementById("productContainer").innerHTML = table;
+        }
+    
+        // Show products on page load
+        showData()
+        function deletedata(i){
+
+    data.splice(i,1)
+localStorage.product=JSON.stringify(data)
+showData()
+}
+    </script>
+    
+</body>
+</html>

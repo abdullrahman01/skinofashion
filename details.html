@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detalis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="header">
+        <a href="index.html" class="logo"><img src="img/logo.png" alt="Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a id="bags" href="cart.html"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </section>
+    <section id="prodetails" class="section-p1">
+        <div class="single-img">
+      <img src="img/t-shirt.jpg" width="100%" id="mainimg" alt="" >
+    <div class="small-img-group">
+    <div class="small-img-col">
+        <img src="img/t-shirt.jpg"  width="100%" class="small-img" srcset="">
+    </div>
+    <div class="small-img-col">
+        <img src="img/t-shirt3.jpg"  width="100%" class="small-img" srcset="">
+    </div>
+    <div class="small-img-col">
+        <img src="img/t-shir4t.jpg"  width="100%" class="small-img" srcset="">
+    </div>
+    <div class="small-img-col">
+        <img src="img/t-shir5t.jpg"  width="100%" class="small-img" srcset="">
+    </div>
+    </div>
+        </div>
+        <div class="single-details">
+            <h6>Home /T-Shirt</h6>
+<h4>Men`s Fashion /T-Shirt</h4>
+<h2>300EGP</h2>
+<SELect>
+    <option value="">select size</option>
+    <option value="">xl</option>
+    <option value="">xxl</option>
+    <option value="">small</option>
+    <option value="">large</option>
+
+</SELect>
+<input type="number" value="1" min="1" >
+<button class="normal">add to cart</button>
+<h4>product details</h4>
+<span>
+    A simple, solid-colored t-shirt made from soft, breathable fabric. It features a classic crew neckline and short sleeves, offering a comfortable and relaxed fit. The design is minimalistic with no patterns or logos, making it a versatile addition to any wardrobe. Perfect for layering or wearing on its own, this t-shirt is available in a variety of colors to suit any style. Ideal for casual outings, workouts, or just lounging at home.</span>
+        </div>
+    </section>
+    <section id="newsletter" class="section-p1 section-m1" >
+        <div class="newstext">
+            <h4 >sign up for newsletters</h4>
+            <p>get e-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+        <input type="text" placeholder="your email adreess">
+        <button class="normal">sign up</button>
+        </div>
+
+    </section>
+    <footer class="section-p1">
+        <div class="col">
+            <img src="img/logofoot.png" alt="" >
+            <h4>contact</h4>
+            <p> <strong>phone:</strong>01129589862</p>
+            <p><strong>hours:</strong> 24h</p>
+            <h4>follow us</h4>
+            <div class="follow">
+<i class="fa-brands fa-facebook"></i>        
+<i class="fa-brands fa-instagram"></i>
+    </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">about us</a>
+            <a href="#">delivery information</a>
+            <a href="#">privacy policy</a>
+            <a href="#">terms $ conditions</a>
+            <a href="#">contact us</a>
+        </div>
+                <div class="col">
+                    <h4>My Account</h4>
+                    <a href="#">sign in</a>
+                    <a href="#">view cart</a>
+                    <a href="#">my wichlist</a>
+                    <a href="#">track my order</a>
+                    <a href="#">help</a>
+                </div>
+    </footer>
+    <script>
+window.onload = function() {
+    var mainimg = document.getElementById('mainimg');
+    var smallimg = document.getElementsByClassName("small-img");
+
+    for (var i = 0; i < smallimg.length; i++) {
+        smallimg[i].onclick = function() {
+            mainimg.src = this.src;
+        };
+    }
+};
+
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
